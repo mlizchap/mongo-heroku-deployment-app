@@ -1,5 +1,6 @@
 - an app for the purposes of deploying a simple Heroku app
 - live version:  https://salty-taiga-31209.herokuapp.com/
+[/get](https://salty-taiga-31209.herokuapp.com/api)
 
 <table>
 <tr>
