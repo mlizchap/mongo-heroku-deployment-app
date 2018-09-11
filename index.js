@@ -44,20 +44,20 @@ app.get('/api', (req, res) => {
       .then(users => res.send(users)) 
   });
 
-app.post('/api/new', () => {
-User.create(req.body)
-    .then(user => res.send(user))
+app.post('/api/new', (req, res) => {
+    User.create(req.body)
+        .then(user => res.send(user))
 })
 
-app.delete('/api/:id', () => {
-User.findByIdAndRemove({ _id: id })
-    .then(user => res.send(user))
+app.delete('/api/:id', (req, res) => {
+    User.findByIdAndRemove({ _id: id })
+        .then(user => res.send(user))
 })
 
-app.put('/api/:id', () => {
-User.findOneAndUpdate({ _id: id}, req.body)
-    .then(() => User.findById({ _id: id }))
-    .then(user => res.send(user))
+app.put('/api/:id', (req, res) => {
+    User.findOneAndUpdate({ _id: id}, req.body)
+        .then(() => User.findById({ _id: id }))
+        .then(user => res.send(user))
 })
 
 
