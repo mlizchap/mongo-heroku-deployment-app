@@ -45,7 +45,7 @@ app.get('/api', (req, res) => {
   });
 
 app.post('/api/new', (req, res) => {
-    db.collection("users").insertOne({ "firstname": "jane"}, {"lastname": "lane"})
+    db.collection("user").insertOne({ "firstname": "jane"}, {"lastname": "lane"})
 })
 
 app.delete('/api/:id', (req, res) => {
