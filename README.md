@@ -1,5 +1,10 @@
-- name: salty-taiga-31209
-- url: https://salty-taiga-31209.herokuapp.com/ 
-- repo: https://git.heroku.com/salty-taiga-31209.git
+- an app for the purposes of deploying a simple Heroku app
+- live version:  https://salty-taiga-31209.herokuapp.com/
 
-curl -H "Content-Type: application/json" -d '{"firstname":"Chris", "lastname": "Chang"}' http://salty-taiga-31209.herokuapp.com/api/new
+<table>
+<tr>
+  <td>[/get](https://salty-taiga-31209.herokuapp.com/api)</td>
+  <td>gets a list of users</td>
+</tr>
+  
+</table>
