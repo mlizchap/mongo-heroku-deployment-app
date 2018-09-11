@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 var app = express();
 
@@ -8,7 +10,7 @@ app.use(bodyParser.json())
 
 var db;
 
-mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+mongodb.MongoClient.connect('mongodb://user2:password2@ds151602.mlab.com:51602/herokutest', function (err, database) {
     if (err) {
       console.log(err);
       process.exit(1);
@@ -18,13 +20,13 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
     console.log("Database connection ready");
   
     var server = app.listen(process.env.PORT || 8080, function () {
-      var port = server.address().port;
-      console.log("App now running on port", port);
+        var port = server.address().port;
+        console.log("App now running on port", port);
     });
 });
 
 // schema
-const UserSchema = new userSchema({
+const UserSchema = new Schema({
     firstname: String,
     lastname: String
 })
@@ -34,25 +36,29 @@ const User = mongoose.model('user', UserSchema)
 
 // routes
 app.get('/', (req, res) => {
+    res.send({ "hello": "there" });
+})
+
+app.get('/api', (req, res) => {
     User.find({})
       .then(users => res.send(users)) 
   });
 
-  app.post('/api/new', () => {
-    User.create(req.body)
-      .then(user => res.send(user))
-  })
+app.post('/api/new', () => {
+User.create(req.body)
+    .then(user => res.send(user))
+})
 
-  app.delete('/api/:id', () => {
-    User.findByIdAndRemove({ _id: id })
-      .then(user => res.send(user))
-  })
+app.delete('/api/:id', () => {
+User.findByIdAndRemove({ _id: id })
+    .then(user => res.send(user))
+})
 
-  app.put('/api/:id', () => {
-    User.findOneAndUpdate({ _id: id}, req.body)
-      .then(() => User.findById({ _id: id }))
-      .then(user => res.send(user))
-  })
+app.put('/api/:id', () => {
+User.findOneAndUpdate({ _id: id}, req.body)
+    .then(() => User.findById({ _id: id }))
+    .then(user => res.send(user))
+})
 
 
 
