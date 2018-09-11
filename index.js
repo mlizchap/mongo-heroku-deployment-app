@@ -24,16 +24,6 @@ mongoose.connect(process.env.MONGODB_URI, function (err, database) {
     });
 });
 
-// db.on('error', function () {console.log('error');});
-// mongoose.connect(process.env.PORT, function (err) {
-//     if (err) {  return console.log('there was a problem' + err);  }
-//     console.log('connected!');
-
-//     db.close();
-//     process.exit();
-
-// });
-
 // schema
 const UserSchema = new Schema({
     firstname: String,
