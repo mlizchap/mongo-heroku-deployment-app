@@ -1,4 +1,5 @@
 - an app for the purposes of deploying a simple Heroku app
+- [documentation of the instructions](https://github.com/mlizchap/mongo-heroku-deployment/blob/master/README.md)
 - live version:  https://salty-taiga-31209.herokuapp.com/api
 
 ## Routes
