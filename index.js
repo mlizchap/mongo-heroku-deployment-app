@@ -9,30 +9,30 @@ var app = express();
 app.use(bodyParser.json())
 
 var db;
-// mongoose.connect(process.env.MONGODB_URI, function (err, database) {
-//     if (err) {
-//       console.log(err);
-//       process.exit(1);
-//     }
+mongoose.connect(process.env.MONGODB_URI, function (err, database) {
+    if (err) {
+      console.log(err);
+      process.exit(1);
+    }
   
-//     db = database;
-//     console.log("Database connection ready");
+    db = database;
+    console.log("Database connection ready");
   
-//     var server = app.listen(process.env.PORT || 8080, function () {
-//         var port = server.address().port;
-//         console.log("App now running on port", port);
-//     });
-// });
-
-db.on('error', function () {console.log('error');});
-mongoose.connect(process.env.PORT, function (err) {
-    if (err) {  return console.log('there was a problem' + err);  }
-    console.log('connected!');
-
-    db.close();
-    process.exit();
-
+    var server = app.listen(process.env.PORT || 8080, function () {
+        var port = server.address().port;
+        console.log("App now running on port", port);
+    });
 });
+
+// db.on('error', function () {console.log('error');});
+// mongoose.connect(process.env.PORT, function (err) {
+//     if (err) {  return console.log('there was a problem' + err);  }
+//     console.log('connected!');
+
+//     db.close();
+//     process.exit();
+
+// });
 
 // schema
 const UserSchema = new Schema({
