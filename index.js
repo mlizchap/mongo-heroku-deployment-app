@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 var db;
 
-mongodb.MongoClient.connect('mongodb://user2:password2@ds151602.mlab.com:51602/herokutest', function (err, database) {
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
     if (err) {
       console.log(err);
       process.exit(1);
